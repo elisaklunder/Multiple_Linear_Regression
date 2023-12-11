@@ -13,3 +13,6 @@ class Tests(unittest.TestCase):
 
         pass
     pass
+
+if __name__ == '__main__':
+    unittest.main()
