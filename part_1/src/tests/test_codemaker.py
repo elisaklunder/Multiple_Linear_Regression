@@ -64,7 +64,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(self.coder._correct_guesses_wrong_pos(guess), 1)
 
     # fails: if the maximum number of terations is not an int
-    # passes: otherwise
+    # passes: if the value is an int or if it is not specified by the user
     def test_max_iterations(self):
         self.coder.max_iterations
         self.assertIsInstance(self.coder.max_iterations, int)
