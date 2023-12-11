@@ -52,7 +52,7 @@ class Tests(unittest.TestCase):
     # fail: otherwise, /the changes of the guess and the randomly generated
     # code to be the same are too small to eventually return true
     def test_correct_number_returened(self):
-        guess = ["B", "Y", "B", "Y"]
+        guess = self.coder._code
         self.assertEqual(self.coder._correct_guesses_right_pos(guess), 4)
 
 
