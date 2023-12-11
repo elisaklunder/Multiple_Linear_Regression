@@ -1,7 +1,7 @@
 import unittest
 import sys
 import os
-sys.path.append(os.getcwd() + "/part_1/src/")
+sys.path.append(os.getcwd() + "/part_1/src/") # noqa
 from codemaker import Codemaker
 
 
