@@ -23,6 +23,7 @@ jobs:
       - name: Run flake8
         uses: suo/flake8-github-action@releases/v1
         with:
+          ignore: "E402"
           checkName: "flake8_py3"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
