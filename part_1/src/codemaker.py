@@ -12,6 +12,9 @@ class Codemaker:
 
     # assume for now that guess is a valid guess
     def _correct_guesses_right_pos(self, guess):
+        if not all(element in self._colors for element in guess):
+            raise TypeError('Invalid guess elements. The only valid guess \
+                            elements are "W", "K", "Y", "G", "R", "B"')
         number = 2
         return number
 

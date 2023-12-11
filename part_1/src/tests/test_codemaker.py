@@ -30,6 +30,11 @@ class Tests(unittest.TestCase):
         self.assertIsInstance(self.coder._correct_guesses_right_pos(guess),
                               int)
 
+    def test_guess_has_correct_colors(self):
+        guess = ["B", "J"]
+        self.assertRaises(TypeError,
+                          self.coder._correct_guesses_right_pos(guess))
+
 
 if __name__ == '__main__':
     unittest.main()
