@@ -43,7 +43,7 @@ class Tests(unittest.TestCase):
     # is the right length since the error is not raised,
     # pass: if length is incorrect the error is raised
     def test_guess_has_incorrect_length(self):
-        guess = ["B", "Y", "B", "R"]
+        guess = ["B", "Y", "B"]
         self.assertRaises(ValueError,
                           self.coder._correct_guesses_right_pos, guess)
 
