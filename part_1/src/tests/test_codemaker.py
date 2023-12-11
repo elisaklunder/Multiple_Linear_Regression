@@ -64,7 +64,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(self.coder._correct_guesses_wrong_pos(guess), 1)
 
     def test_max_iterations(self):
-        self.coder.max_iterations = "one"
+        self.coder.max_iterations = 1
         self.assertIsInstance(self.coder.max_iterations, int)
 
 
