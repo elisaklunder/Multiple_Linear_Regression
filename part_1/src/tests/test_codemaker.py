@@ -31,7 +31,7 @@ class Tests(unittest.TestCase):
                               int)
 
     def test_guess_has_correct_colors(self):
-        guess = ["B", "J"]
+        guess = ["B", "Y"]
         self.assertRaises(TypeError,
                           self.coder._correct_guesses_right_pos(guess))
 
