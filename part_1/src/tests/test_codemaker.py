@@ -47,18 +47,25 @@ class Tests(unittest.TestCase):
         self.assertRaises(ValueError,
                           self.coder._correct_guesses_right_pos, guess)
 
-    # pass: if the guess and the code are the same _correct_guesses_right_pos
-    # should returen 4
-    # fail: otherwise, /the changes of the guess and the randomly generated
-    # code to be the same are too small to eventually return true
-    def test_correct_number_returened(self):
-        guess = self.coder._code
-        self.assertEqual(self.coder._correct_guesses_right_pos(guess), 4)
-
-    def test_correct_number_returened_2(self):
+    # fail: if the funciton _correct_guesses_right_pos(guess) returns the
+    # wrong number of correct guesses
+    # pass: otherwise
+    def test_correct_number_returened_right_pos(self):
         self.coder._code = ["B", "Y", "B", "R"]
-        guess = ["G", "B", "K", "Y"]
-        self.assertEqual(self.coder._correct_guesses_wrong_pos(guess), 2)
+        guess = ["B", "B", "R", "G"]
+        self.assertEqual(self.coder._correct_guesses_right_pos(guess), 1)
+
+    # fails: if the function _correct_guesses_wrong_pos(guess) returns the
+    # incorrect number
+    # pass: otherwise
+    def test_correct_number_returened_wrong_pos(self):
+        self.coder._code = ["B", "Y", "B", "R"]
+        guess = ["B", "B", "K", "R"]
+        self.assertEqual(self.coder._correct_guesses_wrong_pos(guess), 1)
+
+    def test_max_iterations(self):
+        self.coder.max_iterations = "one"
+        self.assertIsInstance(self.coder.max_iterations, int)
 
 
 if __name__ == '__main__':
