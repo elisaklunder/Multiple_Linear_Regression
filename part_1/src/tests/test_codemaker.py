@@ -35,9 +35,9 @@ class Tests(unittest.TestCase):
     # fail: the guess passed to the _correct_guesses_right_pos_ function
     # doesn't have valid colors, pass: otherwise
     def test_guess_has_correct_colors(self):
-        guess = ["B", "Y", "B", "Y"]
+        guess = ["B", "Y", "B", "J"]
         self.assertRaises(TypeError,
-                          self.coder._correct_guesses_right_pos(guess))
+                          self.coder._correct_guesses_right_pos, guess)
 
     # fail: the guess passed to the _correct_guesses_right_pos_ function
     # is the right length since the error is not raised,
@@ -46,6 +46,14 @@ class Tests(unittest.TestCase):
         guess = ["B", "Y", "B"]
         self.assertRaises(ValueError,
                           self.coder._correct_guesses_right_pos, guess)
+
+    # pass: if the guess and the code are the same _correct_guesses_right_pos
+    # should returen 4
+    # fail: otherwise, /the changes of the guess and the randomly generated
+    # code to be the same are too small to eventually return true
+    def test_correct_number_returened(self):
+        guess = ["B", "Y", "B", "Y"]
+        self.assertEqual(self.coder._correct_guesses_right_pos(guess), 4)
 
 
 if __name__ == '__main__':
