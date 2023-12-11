@@ -1,3 +1,0 @@
-
-class Codemaker:
-    pass
