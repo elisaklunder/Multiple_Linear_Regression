@@ -35,16 +35,16 @@ class Tests(unittest.TestCase):
     # fail: the guess passed to the _correct_guesses_right_pos_ function
     # doesn't have valid colors, pass: otherwise
     def test_guess_has_correct_colors(self):
-        guess = ["B", "Y", "B", "Y"]
+        guess = ["B", "Y", "B", "J"]
         self.assertRaises(TypeError,
-                          self.coder._correct_guesses_right_pos(guess))
+                          self.coder._correct_guesses_right_pos, guess)
 
     # fail: the guess passed to the _correct_guesses_right_pos_ function
     # is not of the right length, pass: otherwise
     def test_guess_has_correct_length(self):
-        guess = ["B", "Y", "B", "R"]
+        guess = ["B", "Y", "B"]
         self.assertRaises(ValueError,
-                          self.coder._correct_guesses_right_pos(guess))
+                          self.coder._correct_guesses_right_pos, guess)
 
 
 if __name__ == '__main__':
