@@ -9,7 +9,7 @@ if __name__ == "__main__":
     max_iterations = input()
     opponent = Codemaker()
     opponent._make_code()
-    
+
     print(max_iterations)
     for i in range(max_iterations):
         print("type the guess:")
