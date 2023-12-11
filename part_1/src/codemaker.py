@@ -19,7 +19,6 @@ class Codemaker:
         self._code = random.choices(self._colors, k=4)
         return self._code
 
-    # assume for now that guess is a valid guess
     def _correct_guesses_right_pos(self, guess):
         self._guessErrors(guess)
         number = 0
@@ -30,4 +29,13 @@ class Codemaker:
 
     def _correct_guesses_wrong_pos(self, guess):
         self._guessErrors(guess)
-        pass
+        number = 0
+        i = 0
+        for colors in guess:
+            if colors in self._code and guess[i] != self._code[i]:
+                number += 1
+            i += 1
+        return number
+
+    # max number of attempt
+    # lower to higher case

@@ -55,6 +55,11 @@ class Tests(unittest.TestCase):
         guess = self.coder._code
         self.assertEqual(self.coder._correct_guesses_right_pos(guess), 4)
 
+    def test_correct_number_returened_2(self):
+        self.coder._code = ["B", "Y", "B", "R"]
+        guess = ["G", "B", "K", "Y"]
+        self.assertEqual(self.coder._correct_guesses_wrong_pos(guess), 3)
+
 
 if __name__ == '__main__':
     unittest.main()
