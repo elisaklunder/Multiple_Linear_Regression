@@ -71,5 +71,4 @@ class Codemaker:
             i += 1
         return number
 
-    # max number of attempt
     # lower to higher case
