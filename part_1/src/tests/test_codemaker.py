@@ -20,7 +20,7 @@ class Tests(unittest.TestCase):
         code = self.coder._make_code()
         self.assertTrue(all(isinstance(element, str) for element in code))
 
-    # fail: code doesn't have len = 4, pass: otherwise 
+    # fail: code doesn't have len = 4, pass: otherwise
     def test_code_has_4_elements(self):
         code = self.coder._make_code()
         self.assertTrue(len(code) == 4)
