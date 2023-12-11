@@ -12,7 +12,8 @@ class Codemaker:
 
     # assume for now that guess is a valid guess
     def _correct_guesses_right_pos(self, guess):
-        pass
+        number = 2
+        return number
 
     def _correct_guesses_wrong_pos(self, guess):
         pass
