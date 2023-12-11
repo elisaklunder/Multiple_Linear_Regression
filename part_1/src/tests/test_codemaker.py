@@ -35,7 +35,7 @@ class Tests(unittest.TestCase):
     # fail: the guess passed to the _correct_guesses_right_pos_ function
     # doesn't have valid colors, pass: otherwise
     def test_guess_has_correct_colors(self):
-        guess = ["B", "Y", "B", "R"]
+        guess = ["B", "Y", "B", "Y"]
         self.assertRaises(TypeError,
                           self.coder._correct_guesses_right_pos(guess))
 
