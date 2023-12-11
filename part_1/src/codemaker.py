@@ -9,4 +9,4 @@ class Codemaker:
 
     def make_code(self):
         self.code = random.choices(self._colors, k=10)
-        
+        return self.code
