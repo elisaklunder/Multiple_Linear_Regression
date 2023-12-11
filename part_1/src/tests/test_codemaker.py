@@ -17,6 +17,12 @@ class Tests(unittest.TestCase):
         coder = Codemaker()
         code = coder._make_code()
         self.assertTrue(all(isinstance(element, str) for element in code))
+    
+    # fail: code doesn't have len = 4, pass: otherwise 
+    def test_code_has_4_elements(self):
+        coder = Codemaker()
+        code = coder._make_code()
+        self.assertTrue(len(code) == 4)
 
 
 if __name__ == '__main__':
