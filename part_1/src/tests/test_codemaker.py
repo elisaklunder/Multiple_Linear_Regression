@@ -1,7 +1,7 @@
 import unittest
 import sys
 import os
-sys.path.append(os.getcwd() + "/part_1/src/") 
+sys.path.append(os.getcwd() + "/part_1/src/")
 from codemaker import Codemaker
 
 
@@ -35,14 +35,15 @@ class Tests(unittest.TestCase):
     # fail: the guess passed to the _correct_guesses_right_pos_ function
     # doesn't have valid colors, pass: otherwise
     def test_guess_has_correct_colors(self):
-        guess = ["B", "Y", "B", "J"]
+        guess = ["B", "Y", "B", "Y"]
         self.assertRaises(TypeError,
-                          self.coder._correct_guesses_right_pos, guess)
+                          self.coder._correct_guesses_right_pos(guess))
 
     # fail: the guess passed to the _correct_guesses_right_pos_ function
-    # is not of the right length, pass: otherwise
-    def test_guess_has_correct_length(self):
-        guess = ["B", "Y", "B"]
+    # is the right length since the error is not raised,
+    # pass: if length is incorrect the error is raised
+    def test_guess_has_incorrect_length(self):
+        guess = ["B", "Y", "B", "R"]
         self.assertRaises(ValueError,
                           self.coder._correct_guesses_right_pos, guess)
 
