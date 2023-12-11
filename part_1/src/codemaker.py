@@ -7,4 +7,4 @@ class Codemaker:
 
     def _make_code(self):
         self._code = [1, 2, 3]
-        return self.code
+        return self._code

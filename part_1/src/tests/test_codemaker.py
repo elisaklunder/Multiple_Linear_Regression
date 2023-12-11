@@ -6,11 +6,10 @@ from codemaker import Codemaker
 
 
 class Tests(unittest.TestCase):
-    def __init__(self):
-        self.coder = Codemaker()
 
     # fail: code is nothing, pass: otherwise
     def test_there_is_code(self):
+        self.coder = Codemaker()
         self.assertIsNotNone(self.coder._make_code())
 
 
