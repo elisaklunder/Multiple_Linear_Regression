@@ -1,12 +1,10 @@
-import random
 
 
 class Codemaker:
     def __init__(self) -> None:
-        self.code = []
+        self._code = []
         self.guess = []
-        self._colors = ["W", "K", "Y", "G", "R", "B"]
 
-    def make_code(self):
-        self.code = random.choices(self._colors, k=10)
+    def _make_code(self):
+        self._code = [1, 2, 3]
         return self.code
