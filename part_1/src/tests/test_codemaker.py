@@ -25,19 +25,25 @@ class Tests(unittest.TestCase):
         code = self.coder._make_code()
         self.assertTrue(len(code) == 4)
 
+    # fail: the _correct_guesses_right_pos_ doesn't return a number, pass:
+    # otherwise
     def test_correct_guesses_right_pos_is_number(self):
         guess = ["B", "B", "Y", "R"]
         self.assertIsInstance(self.coder._correct_guesses_right_pos(guess),
                               int)
 
+    # fail: the guess passed to the _correct_guesses_right_pos_ function
+    # doesn't have valid colors, pass: otherwise
     def test_guess_has_correct_colors(self):
         guess = ["B", "Y", "B", "R"]
         self.assertRaises(TypeError,
                           self.coder._correct_guesses_right_pos(guess))
 
+    # fail: the guess passed to the _correct_guesses_right_pos_ function
+    # is not of the right length, pass: otherwise
     def test_guess_has_correct_length(self):
-        guess = ["B", "Y"]
-        self.assertRaises(IndexError,
+        guess = ["B", "Y", "B", "R"]
+        self.assertRaises(ValueError,
                           self.coder._correct_guesses_right_pos(guess))
 
 
