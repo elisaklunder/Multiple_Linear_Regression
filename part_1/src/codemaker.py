@@ -41,7 +41,7 @@ class Codemaker:
             guess: list containg 4 string with the guesses
         Returs:
             number: an int displaying the number of correct guesses
-            in the right position and of the right color
+            in the right position
         Raises:
             errors as described in the private method _guess_errors
         """
@@ -70,5 +70,3 @@ class Codemaker:
                 number += 1
             i += 1
         return number
-
-    # lower to higher case
