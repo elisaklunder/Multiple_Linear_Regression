@@ -27,7 +27,7 @@ greater than 0")
 
         if not all(element in self._colors for element in guess):
             raise TypeError('Invalid guess elements. The only valid guess \
-elements are "W", "K", "Y", "G", "R", "B"')
+elements are "W", "K", "Y", "G", "R", "B" divided by a space')
         pass
 
     def _make_code(self) -> list[str]:
