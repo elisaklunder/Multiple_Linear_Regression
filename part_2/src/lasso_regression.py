@@ -23,7 +23,6 @@ class LassoRegression(MultipleLinearRegression):
         if X is None or y is None:
             raise ValueError("The train or the target slot are empty")
 
-        # ASK A TA: is it an error of the data or should we handle it??
         y = np.reshape(y, (-1, 1))
 
         # Add a column of ones to X for the bias term
