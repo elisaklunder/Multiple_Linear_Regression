@@ -5,6 +5,8 @@ class Codemaker:
     def __init__(self, max_iterations: int = 1) -> None:
         self._code = []
         self._colors = ["W", "K", "Y", "G", "R", "B"]
+        if not isinstance(max_iterations, int):
+            raise TypeError("max iterations should be an int value")
         self.max_iterations = max_iterations
 
     def _guess_errors(self, guess: list[str]) -> None:
