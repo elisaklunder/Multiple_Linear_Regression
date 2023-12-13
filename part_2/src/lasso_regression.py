@@ -15,7 +15,7 @@ class LassoRegression(MultipleLinearRegression):
     def loss_gradient(self, X, y, predicted_y):
         n = np.shape(X)[0]
         X_transposed = X.transpose()
-        gradient = - (2/n) * np.dot(X_transposed, y - predicted_y)
+        gradient = - (2 / n) * np.dot(X_transposed, y - predicted_y)
         + self.lambda_param * np.sign(self._weights)
         return gradient
 
