@@ -5,6 +5,6 @@ from mastermind import Mastermind
 
 
 if __name__ == "__main__":
-    game = Mastermind(max_iterations=3)
+    game = Mastermind(max_iterations="a")
     game._code = ["B", "W", "B", "G"]
     game.game()

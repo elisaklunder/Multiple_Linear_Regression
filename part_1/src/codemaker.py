@@ -64,9 +64,7 @@ class Codemaker:
         """
         self._guess_errors(guess)
         number = 0
-        i = 0
         for colors in guess:
-            if colors in self._code and guess[i] != self._code[i]:
+            if colors in self._code and guess.index(colors) != self._code.index(colors):
                 number += 1
-            i += 1
         return number
