@@ -74,11 +74,16 @@ class Tests(unittest.TestCase):
         guess = ["B", "W", "B", "B"]
         self.assertEqual(self.coder._correct_guesses_wrong_pos(guess), 0)
 
-    # fails: if when the maximum number of terations is not an int the program 
+    # fails: if when the maximum number of terations is not an int the program
     # doesn't raise an error
     # passes: if an error is raised when max_iterations is not an int
     def test_max_iterations1(self):
         max_iterations = "a"
+        self.assertRaises(TypeError, self.coder.__init__,
+                          max_iterations)
+
+    def test_max_iterations2(self):
+        max_iterations = -3
         self.assertRaises(TypeError, self.coder.__init__,
                           max_iterations)
 

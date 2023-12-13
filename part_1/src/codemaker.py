@@ -7,6 +7,10 @@ class Codemaker:
         self._colors = ["W", "K", "Y", "G", "R", "B"]
         if not isinstance(max_iterations, int):
             raise TypeError("max iterations should be an int value")
+
+        if max_iterations < 1:
+            raise TypeError("The number of iterations has to be an integer \
+greater than 0")
         self.max_iterations = max_iterations
 
     def _guess_errors(self, guess: list[str]) -> None:
@@ -23,7 +27,7 @@ class Codemaker:
 
         if not all(element in self._colors for element in guess):
             raise TypeError('Invalid guess elements. The only valid guess \
-                            elements are "W", "K", "Y", "G", "R", "B"')
+elements are "W", "K", "Y", "G", "R", "B"')
         pass
 
     def _make_code(self) -> list[str]:
@@ -67,6 +71,7 @@ class Codemaker:
         self._guess_errors(guess)
         number = 0
         for colors in guess:
-            if colors in self._code and guess.index(colors) != self._code.index(colors):
+            if colors in self._code and \
+                    guess.index(colors) != self._code.index(colors):
                 number += 1
         return number
