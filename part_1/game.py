@@ -1,7 +1,7 @@
 import sys
 import os
 sys.path.append(os.getcwd() + "/part_1/src")
-from mastermind import Mastermind
+from src.mastermind import Mastermind
 
 
 if __name__ == "__main__":
