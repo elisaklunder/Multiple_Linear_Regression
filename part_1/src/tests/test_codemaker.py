@@ -59,8 +59,8 @@ class Tests(unittest.TestCase):
     # incorrect number
     # pass: otherwise
     def test_correct_number_returened_wrong_pos(self):
-        self.coder._code = ["B", "W", "B", "G"]
-        guess = ["B", "W", "B", "B"]
+        self.coder._code = ["B", "Y", "B", "G"]
+        guess = ["B", "W", "B", "Y"]
         self.assertEqual(self.coder._correct_guesses_wrong_pos(guess), 1)
 
     # fails: if the maximum number of terations is not an int
@@ -68,6 +68,11 @@ class Tests(unittest.TestCase):
     def test_max_iterations(self):
         self.coder.max_iterations
         self.assertIsInstance(self.coder.max_iterations, int)
+
+    def test_exception_right_col_wrong_pos(self):
+        self.coder._code = ["B", "W", "B", "G"]
+        guess = ["B", "W", "B", "B"]
+        self.assertEqual(self.coder._correct_guesses_wrong_pos(guess), 0)
 
 
 if __name__ == '__main__':
