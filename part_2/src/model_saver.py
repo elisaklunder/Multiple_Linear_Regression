@@ -11,8 +11,7 @@ class ModelSaver:
     def save_weights(self, model: ML_model, file_path: str) -> None:
         '''
         Args:
-            model: trained model, assuming that to get the weights the model
-            has a method called get_weights()
+            model: trained model
             file_path: string containing the path where the file needs to be
             saved
 
@@ -29,7 +28,7 @@ class ModelSaver:
         if file_format not in supported_formats:
             raise NameError("The given file format is not supported")
 
-        weights = model.get_weights()
+        weights = model.weights
 
         if file_format == '.csv':
             with open(file_path, mode='w', newline='') as file:
@@ -47,8 +46,7 @@ class ModelSaver:
     def load_weights(self, model: ML_model, file_path: str) -> None:
         '''
         Args:
-            model: model where the weights need to be loaded, assuming that to
-            set the weights the model has a method called set_weights()
+            model: model where the weights need to be loaded
             file_path: string containing the path where the file containng the
             weghts is located
 
@@ -64,16 +62,16 @@ class ModelSaver:
                 reader = csv.reader(file)
                 weights = next(reader)
                 weights = np.array(weights, dtype=float)
-                model.set_weights(weights)
+                model.weights(weights)
 
         elif file_format == '.json':
             with open(file_path, 'r') as file:
                 weights = json.load(file)['weights']
                 weights = np.array(weights, dtype=float)
-                model.set_weights(weights)
+                model.weights(weights)
 
         elif file_format == '.pickle':
             with open(file_path, 'rb') as file:
                 weights = pickle.load(file)
                 weights = np.array(weights, dtype=float)
-                model.set_weights(weights)
+                model.weights(weights)

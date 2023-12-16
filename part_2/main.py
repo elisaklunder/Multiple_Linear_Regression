@@ -25,7 +25,7 @@ if __name__ == "__main__":
     # Our Lasso vs sklearn Lasso
     our_lasso = LassoRegression()
     our_lasso.train(X_train, y_train)
-    our_w = our_lasso.get_weights()
+    our_lasso_w = our_lasso.weights
     our_lasso_predictions = our_lasso.predict(X_test)
 
     sklearn_lasso = linear_model.Lasso()
@@ -36,11 +36,10 @@ if __name__ == "__main__":
     print(f"Our lasso predictions are:\n {our_lasso_predictions}")
     print(f"Sklearn lasso predictions are:\n {sklearn_lasso_predictions}\n")
 
-    # Our ridge vs sklearn ridge
+    '''# Our ridge vs sklearn ridge
     our_ridge = RidgeRegression()
     our_ridge.train(X_train, y_train)
-    our_w = our_ridge.get_weights()
-    shape = np.shape(our_w)
+    our_ridge_w = our_ridge.weights
     our_ridge_predictions = our_ridge.predict(X_test)
 
     sklearn_ridge = linear_model.Ridge()
@@ -53,9 +52,7 @@ if __name__ == "__main__":
 
     # save and load weights
     saver = ModelSaver()
-    # saver.save_weights(our_lasso, "./weights.csv")
-    mlr = MultipleLinearRegression()
-    # mlr.train(X_train, y_train)
-    # print(mlr.get_weights())
-    # saver.load_weights(mlr, "./weights.csv")
-    # print(f"predictions with loaded model {mlr.predict(X_test)}")
+    saver.save_weights(our_ridge, "./weights_ridge.csv")
+    #mlr = MultipleLinearRegression()
+    #saver.load_weights(mlr, "./weights_ridge.csv")
+    #print(f"Predictions with loaded model:\n {mlr.predict(X_test)}")'''

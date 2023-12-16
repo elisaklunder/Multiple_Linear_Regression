@@ -41,7 +41,7 @@ There are automated checks that verify that your submission is correct:
 
 ## Your report
 to do:
-- implement error function
+- implement error functions
 - implement log file
 - write report for both p1 and p2
 - check for private and public --> setters
