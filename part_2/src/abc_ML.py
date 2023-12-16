@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class ML_model(ABC):
+    #__init__ ??
 
     @abstractmethod
     def train():
@@ -11,6 +12,7 @@ class ML_model(ABC):
     def predict():
         pass
 
+    @property
     @abstractmethod
     def get_weights():
         pass
