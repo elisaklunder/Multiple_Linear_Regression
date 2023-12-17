@@ -42,11 +42,9 @@ There are automated checks that verify that your submission is correct:
 ## Your report
 to do:
 - implement error function
-- implement log file
 - write report for both p1 and p2
 - comments (?)
 - type-hints/docstrings
-- is the inheritance right ??
 
 Questions:
 - should the gradient be in a separate class? --> if so do the loss functions as well
