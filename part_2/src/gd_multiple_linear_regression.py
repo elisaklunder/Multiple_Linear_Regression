@@ -5,8 +5,8 @@ from loss_function import LossFunction
 
 
 class GDMultipleLinearRegression(MultipleLinearRegression):
-    def __init__(self, strategy: str = "a", num_iterations: int = 1000, alpha:
-                 float = 0.1, lambda_param: float = 1.0):
+    def __init__(self, strategy: str = "uniform", num_iterations: int = 1000,
+                 alpha: float = 0.1, lambda_param: float = 1.0):
         super().__init__()
         self.strategy = strategy
         self.num_iterations = num_iterations
@@ -14,35 +14,41 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
         self.lambda_param = lambda_param
         self._penalty = None
 
+    def _logging(self, i, mse, mae):
+        # Configure logging
+        logging.basicConfig(
+            filename='info_run.log',
+            level=logging.INFO,
+            format='%(message)s')
+
+        # Logging infos
+        logging.info(f"Iteration {i+1}/{self.num_iterations}, mse = {mse},\
+ mae = {mae}")
+
     def _initialize_weights(self, num_weights: int) -> None:
-        if self.strategy == "a":
+        if self.strategy == "uniform":
             self._weights.append(np.random.uniform(low=-1, high=1,
                                                    size=num_weights))
-            self._weights = np.array(self._weights)
-            self._weights = np.transpose(self._weights)
-
-        if self.strategy == "b":
+        if self.strategy == "normal":
             self._weights.append(np.random.normal(loc=0, scale=1,
                                                   size=num_weights))
-            self._weights = np.array(self._weights)
-            self._weights = np.transpose(self._weights)
+        self._weights = np.array(self._weights)
+        self._weights = np.transpose(self._weights)
 
     def _loss_gradient(self, X: np.array, y, predicted_y: np.array) \
             -> np.array:
-
         X_transposed = X.transpose()
         gradient = (1 / len(X)) * np.dot(X_transposed, (predicted_y - y))
-
         return gradient
 
     def gradient_descent(self, X, y):
         # Initialize weights based on the chosen strategy
         num_weights = np.shape(X)[1]
         self._initialize_weights(num_weights)
-        
+
         # Initialize loss object
         loss = LossFunction()
-        
+
         for i in range(self.num_iterations):
 
             # Compute the predicted output for each data point
@@ -59,22 +65,13 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
             mse = loss.mean_squared_error(y, predicted_y, self._penalty,
                                           self._weights, self.lambda_param)
 
-            # Logging infos
-            logging.info(f"Iteration {i+1}/{self.num_iterations}")
-            logging.info(f"The mean sqared error is:{mse}")
-            logging.info(f"The mean absolute error is: {mae}")
+            self._logging(i, mse, mae)
 
     def train(self, X: np.array = None, y: np.array = None) -> None:
         if X is None:
             raise ValueError("The train slot is empty.")
         if y is None:
             raise ValueError("The target slot is empty.")
-
-        # Configure logging
-        logging.basicConfig(
-            filename='info_run.log',
-            level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s')
 
         # Reshaping the target to be in matrix form so that there are no
         # broadcasting issues

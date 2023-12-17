@@ -3,8 +3,8 @@ from src.gd_multiple_linear_regression import GDMultipleLinearRegression
 
 
 class LassoRegression(GDMultipleLinearRegression):
-    def __init__(self, strategy: str = "a", num_iterations: int = 1000, alpha:
-                 float = 0.1, lambda_param: float = 1.0):
+    def __init__(self, strategy: str = "uniform", num_iterations: int = 1000,
+                 alpha: float = 0.1, lambda_param: float = 1.0):
         super().__init__(strategy, num_iterations, alpha, lambda_param)
         self._penalty = "L1"
 
