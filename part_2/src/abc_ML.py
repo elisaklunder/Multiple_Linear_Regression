@@ -14,9 +14,15 @@ class ML_model(ABC):
 
     @property
     @abstractmethod
-    def get_weights():
+    def weights():
         pass
 
+    @weights.getter
     @abstractmethod
-    def set_weights():
+    def weights():
+        pass
+
+    @weights.setter
+    @abstractmethod
+    def weights():
         pass

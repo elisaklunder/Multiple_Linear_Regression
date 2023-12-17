@@ -1,7 +1,7 @@
 import numpy as np
 import logging
 from src.multiple_linear_regression import MultipleLinearRegression
-from scr.loss_function import LossFunction
+from loss_function import LossFunction
 
 
 class LassoRegression(MultipleLinearRegression):
@@ -72,12 +72,13 @@ class LassoRegression(MultipleLinearRegression):
 
             # Compute the predicted output for each data point
             predicted_y = np.dot(X, self._weights)
-
             loss = LossFunction()
+            mae = loss.mean_absolute_error(y, predicted_y)
+            mse = loss.mean_squared_error(y, predicted_y, "l1",
+                                          self._weights, self.lambda_param)
             logging.info(f"Iteration {i+1}/{self.num_iterations}")
-            logging.info(f"The mean sqared error is:{loss.mean_squared_error}")
-            logging.info(f"The mean absolute error is: \
-{loss.mean_absolute_error(y,predicted_y)}")
+            logging.info(f"The mean sqared error is:{mse}")
+            logging.info(f"The mean absolute error is: {mae}")
 
             # Compute the gradient
             gradient = self._loss_gradient(X, y, predicted_y)
