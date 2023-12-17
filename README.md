@@ -41,12 +41,15 @@ There are automated checks that verify that your submission is correct:
 
 ## Your report
 to do:
-- implement error function
 - write report for both p1 and p2
-- comments (?)
-- type-hints/docstrings
-- add typhints for @property in multiple linear regression
-- type checks for loss_function.py + check docstring some things are missng
+- comments (?) --> how much?
+- double check type-hints/docstrings
+- add typhints for @property in multiple linear regression + abc
+- type checks for loss_function.py + check docstring some things are missng + raise errors
+- raise an error in the model saver --> load weights if the given file has the wrong extention
+- PUBLIC AND PRIVATE ATTRIBUTES IN THE METHODS
+
+- REGRESSION PLOTTER SHOLD WORK AS WELL!!!!
 
 Questions:
 - should the gradient be in a separate class? --> if so do the loss functions as well

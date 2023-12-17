@@ -14,7 +14,8 @@ class MultipleLinearRegression(ML_model):
             y: 1d numpy array with n rows containing target values
 
         Raises:
-            Error when XTX is not invertible
+            np.linalg.LinAlgError when XTX is not invertible
+            Value error if the X or the y slot were not specified
 
         Returns:
             None
@@ -43,15 +44,14 @@ class MultipleLinearRegression(ML_model):
             columns (p=number of parameters)
 
         Raises:
-            No errors
+            ValueError if the X is not specified
 
         Returns:
             array containing predictions genarated from the X input
         """
         if X is None:
             raise ValueError(
-                "The values that need to be predicted \
-                             weren't given"
+                "The values that need to be predicted weren't given"
             )
 
         n = np.shape(X)[0]
@@ -84,7 +84,7 @@ class MultipleLinearRegression(ML_model):
             to self.weights
 
         Raises:
-            Error if the array contains non numerical values
+            No errors
 
         Returns:
             None

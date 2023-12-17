@@ -63,16 +63,16 @@ class ModelSaver:
                 reader = csv.reader(file)
                 weights = next(reader)
                 weights = np.array(weights, dtype=float)
-                model.weights(weights)
+                model.weights = weights
 
         elif file_format == ".json":
             with open(file_path, "r") as file:
                 weights = json.load(file)["weights"]
                 weights = np.array(weights, dtype=float)
-                model.weights(weights)
+                model.weights = weights
 
         elif file_format == ".pickle":
             with open(file_path, "rb") as file:
                 weights = pickle.load(file)
                 weights = np.array(weights, dtype=float)
-                model.weights(weights)
+                model.weights = weights

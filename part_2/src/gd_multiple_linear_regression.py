@@ -29,7 +29,8 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
                  iteration
             mae: float with the value of the mean absolute error for the given
                  iteration
-
+        Raises:
+            No errors
         Returns:
             None
         """
@@ -46,6 +47,8 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
         Args:
             num_weights: integer representing the number of weights to be
                          initialized for gradient descent
+        Raises:
+            No Errors
         Returns:
             None
         """
@@ -70,7 +73,8 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
             y: 1d numpy array with n rows containing target values
             predicted_y: 1d numpy array with n rows containing the predicted
                          target values
-
+        Raises:
+            No Errors
         Returns:
             np.array with the gradient values
         """
@@ -84,6 +88,8 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
             X: 2d numpy array with n rows (n=number of datapoints) and p
                columns (p=number of parameters)
             y: 1d numpy array with n rows containing target values
+        Raises:
+            No errors
         Returns:
             None
 
@@ -121,7 +127,7 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
             y: 1d numpy array with n rows containing target values
 
         Raises:
-            Value errors if the X or y attributes where not specified
+            ValueErrors if the X or y attributes were not specified
 
         Returns:
             None

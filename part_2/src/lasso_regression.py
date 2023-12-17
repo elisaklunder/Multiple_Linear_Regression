@@ -23,7 +23,8 @@ class LassoRegression(GDMultipleLinearRegression):
             y: 1d numpy array with n rows containing target values
             y_predicted: 1d numpy array with n rows containing predicted target
                          values
-
+        Raises:
+            No Errors
         Returns:
             array containing the values for the gradient
 
