@@ -40,3 +40,15 @@ There are automated checks that verify that your submission is correct:
 ---
 
 ## Your report
+<<<<<<< HEAD
+=======
+to do:
+- implement error functions
+- implement log file
+- write report for both p1 and p2
+- check for private and public --> setters
+- comments (?)
+- doublecheck for other errors
+- is the inheritance right ??
+- is abc_ML correct ???
+>>>>>>> 0be7cf18601ffb3661a0a6a6c99d214e5a43a603

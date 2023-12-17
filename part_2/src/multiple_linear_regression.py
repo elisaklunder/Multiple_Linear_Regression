@@ -54,7 +54,12 @@ class MultipleLinearRegression(ML_model):
         X = np.c_[np.ones(n), X]
         return np.dot(X, self._weights)
 
-    def get_weights(self) -> np.array:
+    @property
+    def weights(self):
+        return self._weights
+
+    @weights.getter
+    def weights(self) -> np.array:
         '''
         Args:
             No arguments
@@ -67,7 +72,8 @@ class MultipleLinearRegression(ML_model):
         '''
         return self._weights
 
-    def set_weights(self, new_weights: np.array) -> None:
+    @weights.setter
+    def weights(self, new_weights: np.array) -> None:
         '''
         Args:
             new_weights: array containing value of the weights to be assigned
