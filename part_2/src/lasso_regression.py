@@ -19,12 +19,13 @@ class LassoRegression(GDMultipleLinearRegression):
         """
         Args:
             X: 2d numpy array with n rows (n=number of datapoints) and p
-            columns (p=number of parameters)
+               columns (p=number of parameters)
             y: 1d numpy array with n rows containing target values
-
-        Raises:
+            y_predicted: 1d numpy array with n rows containing predicted target
+                         values
 
         Returns:
+            array containing the values for the gradient
 
         """
         n = np.shape(X)[0]

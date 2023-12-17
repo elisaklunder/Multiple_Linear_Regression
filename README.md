@@ -45,6 +45,8 @@ to do:
 - write report for both p1 and p2
 - comments (?)
 - type-hints/docstrings
+- add typhints for @property in multiple linear regression
+- type checks for loss_function.py + check docstring some things are missng
 
 Questions:
 - should the gradient be in a separate class? --> if so do the loss functions as well
