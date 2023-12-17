@@ -52,3 +52,4 @@ Questions:
 - should the gradient be in a separate class? --> if so do the loss functions as well
 - should init be in the abc?
 - is abc_ML correct ???
+- should the @property be docstringed in teh abc class
