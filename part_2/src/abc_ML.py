@@ -3,7 +3,6 @@ from typing import Any, List
 
 
 class ML_model(ABC):
-
     @abstractmethod
     def train(self, X: List[Any]) -> None:
         """

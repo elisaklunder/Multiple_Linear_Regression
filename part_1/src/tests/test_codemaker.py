@@ -1,12 +1,12 @@
-import unittest
-import sys
 import os
+import sys
+import unittest
+
 sys.path.append(os.getcwd() + "/part_1/src/")
 from codemaker import Codemaker
 
 
 class Tests(unittest.TestCase):
-
     @classmethod
     def setUpClass(self):
         self.coder = Codemaker()
@@ -29,23 +29,26 @@ class Tests(unittest.TestCase):
     # otherwise
     def test_correct_guesses_right_pos_is_number(self):
         guess = ["B", "B", "Y", "R"]
-        self.assertIsInstance(self.coder._correct_guesses_right_pos(guess),
-                              int)
+        self.assertIsInstance(
+            self.coder._correct_guesses_right_pos(guess), int
+        )
 
     # fail: the guess passed to the _correct_guesses_right_pos_ function
     # doesn't have valid colors, pass: otherwise
     def test_guess_has_correct_colors(self):
         guess = ["B", "Y", "B", "J"]
-        self.assertRaises(TypeError,
-                          self.coder._correct_guesses_right_pos, guess)
+        self.assertRaises(
+            TypeError, self.coder._correct_guesses_right_pos, guess
+        )
 
     # fail: the guess passed to the _correct_guesses_right_pos_ function
     # is the right length since the error is not raised,
     # pass: if length is incorrect the error is raised
     def test_guess_has_incorrect_length(self):
         guess = ["B", "Y", "B"]
-        self.assertRaises(ValueError,
-                          self.coder._correct_guesses_right_pos, guess)
+        self.assertRaises(
+            ValueError, self.coder._correct_guesses_right_pos, guess
+        )
 
     # fail: if the funciton _correct_guesses_right_pos(guess) returns the
     # wrong number of correct guesses
@@ -79,14 +82,12 @@ class Tests(unittest.TestCase):
     # passes: if an error is raised when max_iterations is not an int
     def test_max_iterations1(self):
         max_iterations = "a"
-        self.assertRaises(TypeError, self.coder.__init__,
-                          max_iterations)
+        self.assertRaises(TypeError, self.coder.__init__, max_iterations)
 
     def test_max_iterations2(self):
         max_iterations = -3
-        self.assertRaises(TypeError, self.coder.__init__,
-                          max_iterations)
+        self.assertRaises(TypeError, self.coder.__init__, max_iterations)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

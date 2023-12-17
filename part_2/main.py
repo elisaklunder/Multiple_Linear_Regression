@@ -1,18 +1,15 @@
-import numpy as np
-import sys
 import os
+import sys
+
 sys.path.append(os.getcwd() + "/part_2/src")
+from sklearn import datasets, linear_model
 from src.gd_multiple_linear_regression import GDMultipleLinearRegression
 from src.lasso_regression import LassoRegression
-from src.ridge_regression import RidgeRegression
-from src.model_saver import ModelSaver
-from sklearn import datasets
-from sklearn import linear_model
 from src.loss_function import LossFunction
-
+from src.model_saver import ModelSaver
+from src.ridge_regression import RidgeRegression
 
 if __name__ == "__main__":
-
     X, y = datasets.load_diabetes(return_X_y=True)
 
     # Split the data into training/testing sets
@@ -23,7 +20,7 @@ if __name__ == "__main__":
     y_train = y[:-20]
     y_test = y[-20:]
 
-    '''# Our Lasso vs sklearn Lasso
+    """# Our Lasso vs sklearn Lasso
     our_lasso = LassoRegression()
     our_lasso.train(X_train, y_train)
     our_lasso_predictions = our_lasso.predict(X_test)
@@ -47,7 +44,7 @@ if __name__ == "__main__":
 
     # Compare ridge predictions
     print(f"Our ridge predictions are:\n {our_ridge_predictions}")
-    print(f"Sklearn ridge predictions are:\n {sklearn_ridge_predictions}\n")'''
+    print(f"Sklearn ridge predictions are:\n {sklearn_ridge_predictions}\n")"""
 
     # Our GD linear regression vs sklearn one
     our_gd_mlr = GDMultipleLinearRegression()
@@ -71,8 +68,8 @@ if __name__ == "__main__":
     print(our_mae, our_mse)
     print(sk_mae, sk_mse)
     # save and load weights
-    #saver = ModelSaver()
-    #saver.save_weights(our_ridge, "./weights_ridge.csv")
-    #mlr = MultipleLinearRegression()
-    #saver.load_weights(mlr, "./weights_ridge.csv")
-    #print(f"Predictions with loaded model:\n {mlr.predict(X_test)}")
+    # saver = ModelSaver()
+    # saver.save_weights(our_ridge, "./weights_ridge.csv")
+    # mlr = MultipleLinearRegression()
+    # saver.load_weights(mlr, "./weights_ridge.csv")
+    # print(f"Predictions with loaded model:\n {mlr.predict(X_test)}")

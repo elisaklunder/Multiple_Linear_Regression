@@ -2,15 +2,19 @@ import numpy as np
 from numpy.linalg import norm
 
 
-class LossFunction():
-
-    def mean_squared_error(self, y, predicted_y, penalty: str = None,
-                           weights: np.array = [],
-                           lambda_param: float = 0.0):
+class LossFunction:
+    def mean_squared_error(
+        self,
+        y,
+        predicted_y,
+        penalty: str = None,
+        weights: np.array = [],
+        lambda_param: float = 0.0,
+    ):
         n = np.shape(y)[0]
         sum = 0
         for i in range(n):
-            sum += (y[i] - predicted_y[i])**2
+            sum += (y[i] - predicted_y[i]) ** 2
         if penalty is None:
             return sum / n
         if penalty == "L1":

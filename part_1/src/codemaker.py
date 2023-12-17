@@ -9,8 +9,10 @@ class Codemaker:
             raise TypeError("max iterations should be an int value")
 
         if max_iterations < 1:
-            raise TypeError("The number of iterations has to be an integer \
-greater than 0")
+            raise TypeError(
+                "The number of iterations has to be an integer \
+greater than 0"
+            )
         self.max_iterations = max_iterations
 
     def _guess_errors(self, guess: list[str]) -> None:
@@ -26,8 +28,10 @@ greater than 0")
             raise ValueError("The guess must be a list of four elements.")
 
         if not all(element in self._colors for element in guess):
-            raise TypeError('Invalid guess elements. The only valid guess \
-elements are "W", "K", "Y", "G", "R", "B" divided by a space')
+            raise TypeError(
+                'Invalid guess elements. The only valid guess \
+elements are "W", "K", "Y", "G", "R", "B" divided by a space'
+            )
         pass
 
     def _make_code(self) -> list[str]:
@@ -71,7 +75,8 @@ elements are "W", "K", "Y", "G", "R", "B" divided by a space')
         self._guess_errors(guess)
         number = 0
         for colors in guess:
-            if colors in self._code and \
-                    guess.index(colors) != self._code.index(colors):
+            if colors in self._code and guess.index(
+                colors
+            ) != self._code.index(colors):
                 number += 1
         return number

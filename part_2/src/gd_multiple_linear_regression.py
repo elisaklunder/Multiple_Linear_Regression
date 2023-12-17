@@ -1,12 +1,18 @@
-import numpy as np
 import logging
-from src.multiple_linear_regression import MultipleLinearRegression
+
+import numpy as np
 from loss_function import LossFunction
+from src.multiple_linear_regression import MultipleLinearRegression
 
 
 class GDMultipleLinearRegression(MultipleLinearRegression):
-    def __init__(self, strategy: str = "uniform", num_iterations: int = 1000,
-                 alpha: float = 0.1, lambda_param: float = 1.0):
+    def __init__(
+        self,
+        strategy: str = "uniform",
+        num_iterations: int = 1000,
+        alpha: float = 0.1,
+        lambda_param: float = 1.0,
+    ):
         super().__init__()
         self.strategy = strategy
         self.num_iterations = num_iterations
@@ -15,28 +21,30 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
         self._penalty = None
 
     def _logging(self, i, mse, mae):
-        # Configure logging
         logging.basicConfig(
-            filename='info_run.log',
-            level=logging.INFO,
-            format='%(message)s')
+            filename="info_run.log", level=logging.INFO, format="%(message)s"
+        )
 
-        # Logging infos
-        logging.info(f"Iteration {i+1}/{self.num_iterations}, mse = {mse},\
- mae = {mae}")
+        logging.info(
+            f"Iteration {i+1}/{self.num_iterations}, mse = {mse},\
+ mae = {mae}"
+        )
 
     def _initialize_weights(self, num_weights: int) -> None:
         if self.strategy == "uniform":
-            self._weights.append(np.random.uniform(low=-1, high=1,
-                                                   size=num_weights))
+            self._weights.append(
+                np.random.uniform(low=-1, high=1, size=num_weights)
+            )
         if self.strategy == "normal":
-            self._weights.append(np.random.normal(loc=0, scale=1,
-                                                  size=num_weights))
+            self._weights.append(
+                np.random.normal(loc=0, scale=1, size=num_weights)
+            )
         self._weights = np.array(self._weights)
         self._weights = np.transpose(self._weights)
 
-    def _loss_gradient(self, X: np.array, y, predicted_y: np.array) \
-            -> np.array:
+    def _loss_gradient(
+        self, X: np.array, y, predicted_y: np.array
+    ) -> np.array:
         X_transposed = X.transpose()
         gradient = (1 / len(X)) * np.dot(X_transposed, (predicted_y - y))
         return gradient
@@ -50,7 +58,6 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
         loss = LossFunction()
 
         for i in range(self.num_iterations):
-
             # Compute the predicted output for each data point
             predicted_y = np.dot(X, self._weights)
 
@@ -62,8 +69,9 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
 
             # Compute the losses
             mae = loss.mean_absolute_error(y, predicted_y)
-            mse = loss.mean_squared_error(y, predicted_y, self._penalty,
-                                          self._weights, self.lambda_param)
+            mse = loss.mean_squared_error(
+                y, predicted_y, self._penalty, self._weights, self.lambda_param
+            )
 
             self._logging(i, mse, mae)
 
