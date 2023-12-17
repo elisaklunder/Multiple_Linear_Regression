@@ -40,15 +40,15 @@ There are automated checks that verify that your submission is correct:
 ---
 
 ## Your report
-<<<<<<< HEAD
-=======
 to do:
-- implement error functions
+- implement error function
 - implement log file
 - write report for both p1 and p2
-- check for private and public --> setters
 - comments (?)
-- doublecheck for other errors
+- type-hints/docstrings
 - is the inheritance right ??
+
+Questions:
+- should the gradient be in a separate class? --> if so do the loss functions as well
+- should init be in the abc?
 - is abc_ML correct ???
->>>>>>> 0be7cf18601ffb3661a0a6a6c99d214e5a43a603
