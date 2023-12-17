@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 
 
 class ML_model(ABC):
-    #__init__ ??
 
     @abstractmethod
     def train():

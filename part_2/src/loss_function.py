@@ -4,12 +4,12 @@ from numpy.linalg import norm
 
 class LossFunction():
 
-    def mean_squared_error(self, y, predicted_y, penalty, weights,
-                           lambda_param):
+    def mean_squared_error(self, y, predicted_y, penalty: str = None,
+                           weights: np.array = [],lambda_param: float = 0.0):
         n = np.shape(y)[0]
         sum = 0
         for i in range(n):
-            sum += (y - predicted_y)**2
+            sum += (y[i] - predicted_y[i])**2
         if penalty is None:
             lambda_param = 0
         if penalty == "L1":
@@ -23,4 +23,5 @@ class LossFunction():
         n = np.shape(y)[0]
         sum = 0
         for i in range(n):
-            sum += abs(y - predicted_y)
+            sum += abs(y[i] - predicted_y[i])
+        return sum
