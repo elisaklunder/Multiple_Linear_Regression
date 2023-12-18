@@ -41,21 +41,13 @@ There are automated checks that verify that your submission is correct:
 
 ## Your report
 to do:
-- write report for both p1 and p2
+- write report for and p2
 - comments (?) --> how much?
 - double check type-hints/docstrings
-- add typhints for @property in multiple linear regression + abc
 - type checks for loss_function.py + check docstring some things are missng + raise errors
-- raise an error in the model saver --> load weights if the given file has the wrong extention
-- PUBLIC AND PRIVATE ATTRIBUTES IN THE METHODS
 
+-DO TYPECHECKS FOR EVERY FUCKIN ARGUMENT
 - REGRESSION PLOTTER SHOLD WORK AS WELL!!!!
-
-Questions:
-- should the gradient be in a separate class? --> if so do the loss functions as well
-- should init be in the abc?
-- is abc_ML correct ???
-- should the @property be docstringed in teh abc class
 
 ##Part 1
 
@@ -64,11 +56,11 @@ Manages Mastermind's solution with private attributes _colors and _code (which s
 
 Methods:
 
-_guess_errors(): raises errors on the user input. Private because the guess format is given at the beginning nd should not be modified.
+_guess_errors(): raises errors on the user input. Private because the guess format is given at the beginning and should not be modified.
 
-_make_code(self): ìgenerates a random combination of code. Private since the secret code should not be modified by the user.
+_make_code(self): generates a random combination of code. Private since the secret code should not be modified by the user.
 
-get_code(): provides a way for the user to retrieve the secret code. Public becasue it allows users to access the value of the secret code safely.
+get_code(): provides a way for the user to retrieve the secret code. Public because it allows users to access the value of the secret code safely.
 
 _correct_guesses_right_pos() and _correct_guesses_wrong_pos(): compare a guess with the secret code and return the number of correct guesses in the right/wrong position. Private becasue internal details of the code evaluation process should be kept hidden from the user.
 
@@ -76,6 +68,6 @@ _correct_guesses_right_pos() and _correct_guesses_wrong_pos(): compare a guess w
 Inherits from Codemaker and runs the actual game. Its attributes are inherited from Codemaker.
 The additional methods are:
 
-_formatting_guess(): ìensures that the input given by the user is converted to uppercase. Private becasue internal details of the game's input processing shouldn't be public.
+_formatting_guess(): ensures that the input given by the user is converted to uppercase. Private because internal details of the game's input processing shouldn't be public.
 
 game(): public method that is called in the main and takes care of carrying out the game. It generates the secret code, prompts the user to input their guesses, receives user input guesses, and provides feedback to the user. After the max_iterations iterations are complete, the correct answer is revealed.
