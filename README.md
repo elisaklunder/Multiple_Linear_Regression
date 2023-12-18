@@ -64,3 +64,10 @@ Our implementation of the mastermind game consists of 3 files, one for each func
 - game: runs the game
 
 **Codemaker
+This class contains one constructor and 5 methods, all of which but one (get_code(self)) are private.
+
+_guess_errors(): private method that raises the errors when the user input is not formatted correctly or is not valid. The method should not be accessible by the user since the format of the guess is given at the beginning.
+
+_make_code(self): private method that generates a random combination of code given the accepted colors. The procedure to make the code or modify it should not be accessed by the user, if not through getters. Otherwise the goal of the game would be defeated.
+
+ _correct_guesses_right_pos(): 
