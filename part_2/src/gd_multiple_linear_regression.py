@@ -30,7 +30,20 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
             the given iteration
             mae (float): float with the value of the mean absolute error for
             the given iteration
+
+        Raises:
+            ValueError: if the mse or the mae are not numbers of type int or
+            float
         """
+        if not isinstance(mse, np.ndarray) and mse.dtype == float:
+            raise ValueError("the mean squared error is not in the right \
+format")
+
+        if not isinstance(mae, (np.ndarray)) and mae.dtype == float:
+            raise ValueError("the mean absolute error is not in the right \
+format")
+        if not isinstance(i, (int)):
+            raise ValueError("the number of iterations has to be an int")
         logging.basicConfig(
             filename="info_run.log", level=logging.INFO, format="%(message)s"
         )
@@ -47,8 +60,12 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
         Args:
             num_weights (int): integer representing the number of weights
             to be initialized for gradient descent
-        """
 
+        Raises:
+            ValueError: if the num_weights is not an integer value
+        """
+        if isinstance(num_weights, int):
+            ValueError("the number of weights should be an int")
         if self.strategy == "uniform":
             self.weight = self.weights.append(
                 np.random.uniform(low=-1, high=1, size=num_weights)
@@ -61,7 +78,7 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
         self.weights = np.transpose(self.weights)
 
     def _loss_gradient(
-        self, X: np.array, y, predicted_y: np.array
+        self, X: np.ndarray, y, predicted_y: np.ndarray
     ) -> np.array:
         """
         method that computes the loss gradient (the derivative of the loss
@@ -73,9 +90,17 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
             y (_type_): 1d numpy array with n rows containing target values
             predicted_y (np.array): _description_
 
+        Raises:
+        TypeError: if the  number of features and the number of
+            predictions does not match
+
         Returns:
             np.array: np.array with the gradient values
         """
+
+        if np.shape(X)[0] != np.shape(y)[0]:
+            raise TypeError("the matrices cannot be multiplied since they \
+have uncompatible shapes")
 
         X_transposed = X.transpose()
         gradient = (1 / len(X)) * np.dot(X_transposed, (predicted_y - y))
@@ -89,7 +114,14 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
             X (np.array): 2d numpy array with n rows (n=number of datapoints)
             and p columns (p=number of parameters)
             y (np.array): 1d numpy array with n rows containing target values
+
+            Raises:
+            TypeError: if the  number of features and the number of
+            predictions does not match
         """
+        if np.shape(X)[0] != np.shape(y)[0]:
+            raise TypeError("the number of features and the number of \
+predictions does not match, something went wrong")
         # Initialize weights based on the chosen strategy
         num_weights = np.shape(X)[1]
         self._initialize_weights(num_weights)
@@ -129,11 +161,18 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
         Raises:
             ValueError: if the X variable is not specified
             ValueError: if the y variable is not specified
+            TypeError: if the  number of features and the number of
+            predictions does not match
         """
         if X is None:
-            raise ValueError("The train slot is empty.")
+            raise ValueError("The train slot is empty, define it to make it\
+work.")
         if y is None:
-            raise ValueError("The target slot is empty.")
+            raise ValueError("The target slot is empty, define it to make it\
+ work.")
+        if np.shape(X)[0] != np.shape(y)[0]:
+            raise TypeError("the number of features and the number of \
+predictions does not match, something went wrong")
 
         # Reshaping the target to be in matrix form so that there are no
         # broadcasting issues
