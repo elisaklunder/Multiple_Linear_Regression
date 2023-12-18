@@ -23,6 +23,7 @@ class MultipleLinearRegression(ML_model):
         """
         if X is None or y is None:
             raise ValueError("The train or the target slot are empty")
+
         n = np.shape(X)[0]
         X = np.c_[np.ones(n), X]
         X_transposed = X.transpose()
@@ -37,12 +38,12 @@ not invertible. Check your input data."
 
         self.weights = np.dot(np.dot(inverse_dot_product, X_transposed), y)
 
-    def predict(self, X: np.array = None) -> np.array:
+    def predict(self, X: np.ndarray = None) -> np.ndarray:
         """
-        makes predictions on a given np.array
+        makes predictions on a given np.ndarray
 
         Args:
-            X (np.array, optional): 2d numpy array with n rows (n=number of
+            X (np.ndarray, optional): 2d numpy array with n rows (n=number of
             datapoints) and p-1 columns (p=number of parameters). Defaults to
             None.
 
@@ -50,7 +51,7 @@ not invertible. Check your input data."
             ValueError: if the X is not specified
 
         Returns:
-            np.array: array containing predictions genarated from the X input
+            np.ndarray: array containing predictions genarated from the X input
         """
         if X is None:
             raise ValueError(
@@ -62,22 +63,23 @@ not invertible. Check your input data."
         return np.dot(X, self.weights)
 
     @property
-    def weights(self) -> np.array:
+    def weights(self) -> np.ndarray:
         """
         getter
 
         Returns:
-            np.array: An array containing the weights of the model
+            np.ndarray: An array containing the weights of the model
         """
         return self._weights
 
     @weights.setter
-    def weights(self, new_weights: np.array) -> None:
+    def weights(self, new_weights: np.ndarray) -> None:
         """
         setter
 
         Args:
-            new_weights (np.array): array containing value of the weights to be
+            new_weights (np.ndarray): array containing value of the weights
+            to be
             assigned to self.weights
         """
         self._weights = new_weights

@@ -79,23 +79,23 @@ format")
 
     def _loss_gradient(
         self, X: np.ndarray, y, predicted_y: np.ndarray
-    ) -> np.array:
+    ) -> np.ndarray:
         """
         method that computes the loss gradient (the derivative of the loss
         function)
 
         Args:
-            X (np.array): 2d numpy array with n rows (n=number of datapoints)
+            X (np.ndarray): 2d numpy array with n rows (n=number of datapoints)
             and p columns (p=number of parameters)
             y (_type_): 1d numpy array with n rows containing target values
-            predicted_y (np.array): _description_
+            predicted_y (np.ndarray): _description_
 
         Raises:
         TypeError: if the  number of features and the number of
             predictions does not match
 
         Returns:
-            np.array: np.array with the gradient values
+            np.ndarray: array with the gradient values
         """
 
         if np.shape(X)[0] != np.shape(y)[0]:
@@ -106,14 +106,14 @@ have uncompatible shapes")
         gradient = (1 / len(X)) * np.dot(X_transposed, (predicted_y - y))
         return gradient
 
-    def _gradient_descent(self, X: np.array, y: np.array) -> None:
+    def _gradient_descent(self, X: np.ndarray, y: np.ndarray) -> None:
         """
         method that updates the weights iteratively based on the loss gradient
 
         Args:
-            X (np.array): 2d numpy array with n rows (n=number of datapoints)
+            X (np.ndarray): 2d numpy array with n rows (n=number of datapoints)
             and p columns (p=number of parameters)
-            y (np.array): 1d numpy array with n rows containing target values
+            y (np.ndarray): 1d numpy array with n rows containing target values
 
             Raises:
             TypeError: if the  number of features and the number of
@@ -147,15 +147,15 @@ predictions does not match, something went wrong")
 
             self._logging(i, mse, mae)
 
-    def train(self, X: np.array = None, y: np.array = None) -> None:
+    def train(self, X: np.ndarray = None, y: np.ndarray = None) -> None:
         """
         public method that carries out the training with gradient descent
 
         Args:
-            X (np.array, optional):  2d numpy array with n rows (n=number of
+            X (np.ndarray, optional):  2d numpy array with n rows (n=number of
             datapoints) and p-1 columns (p=number of parameters). Defaults to
             None.
-            y (np.array, optional): 1d numpy array with n rows containing
+            y (np.ndarray, optional): 1d numpy array with n rows containing
             target values. Defaults to None.
 
         Raises:

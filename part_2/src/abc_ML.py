@@ -9,7 +9,7 @@ class ML_model(ABC):
         Args:
             X: data set the model is trained on, it can assume any format
               supported by the model, usually it is a List of values, but they
-              can also be formatted in a data frame or np.array.
+              can also be formatted in a data frame or np.ndarray.
 
         Returns:
             None
