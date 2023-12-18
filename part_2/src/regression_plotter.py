@@ -30,16 +30,16 @@ class RegressionPlotter:
 
     @staticmethod
     def _plot_2d(
-        _X: np.array, _y: np.array, _slopes: np.array, _n_features: int
+        _X: np.ndarray, _y: np.ndarray, _slopes: np.ndarray, _n_features: int
     ) -> plt:
         """
         method that plots data in two dimensions
 
         Args:
-            _X: 2d np.array with n colums indicating the features and m rows,
+            _X: 2d np.ndarray with n colums indicating the features and m rows,
             one for each point
-            _y: 1d np.array containing the target value
-            _slopes: 1d np.array containing the sopes of the lines that needs
+            _y: 1d np.ndarray containing the target value
+            _slopes: 1d np.ndarray containing the sopes of the lines that needs
             to be plotted
             _n_features: int indicating the number of features, it produces
             _n_features number of plots
@@ -78,14 +78,14 @@ class RegressionPlotter:
         plt.show()
 
     @staticmethod
-    def _plot_3d(_X: np.array, _y: np.array, _slopes: np.array) -> plt:
+    def _plot_3d(_X: np.ndarray, _y: np.ndarray, _slopes: np.ndarray) -> plt:
         """
         method that plots data in three dimensions
 
         Args:
-            X: 2d np.array with n colums indicating the features and m rows,
+            X: 2d np.ndarray with n colums indicating the features and m rows,
             one for each point
-            y: 1d np.array containing the target value
+            y: 1d np.ndarray containing the target value
             slopes: 1d np.aray containing the parameters for plotting the plane
 
         Returns:
@@ -116,16 +116,16 @@ class RegressionPlotter:
         ax.set_zlabel("z", labelpad=20)
         plt.show()
 
-    def plot(self, model: ML_model, X: np.array, y: np.array) -> plt:
+    def plot(self, model: ML_model, X: np.ndarray, y: np.ndarray) -> plt:
         """
         method that plots data and the corresponding regression line(s) or
         regression plane for any number of dimensions, given some data and a
         trained regression model
 
         Args:
-            X: 2d np.array with n colums indicating the features and m rows,
+            X: 2d np.ndarray with n colums indicating the features and m rows,
             one for each point
-            y: 1d np.array containing the target value
+            y: 1d np.ndarray containing the target value
 
         Returns:
             2 or 3 dimensional plots based on the number of features and the
