@@ -58,16 +58,24 @@ Questions:
 - should the @property be docstringed in teh abc class
 
 ##Part 1
-Our implementation of the mastermind game consists of 3 files, one for each functinality of the class:
-- codemaker: class taking care of the functionalities relative to providing a solution to the game
-- mastermind: class taking care of the user input
-- game: runs the game
 
 **Codemaker
-This class contains one constructor and 5 methods, all of which but one (get_code(self)) are private.
+Manages Mastermind's solution with private attributes _colors and _code (which should therefore not be modified by the user) and public attribute max_iterations, set by the user at the start of the game.
 
-_guess_errors(): private method that raises the errors when the user input is not formatted correctly or is not valid. The method should not be accessible by the user since the format of the guess is given at the beginning.
+Methods:
 
-_make_code(self): private method that generates a random combination of code given the accepted colors. The procedure to make the code or modify it should not be accessed by the user, if not through getters. Otherwise the goal of the game would be defeated.
+_guess_errors(): raises errors on the user input. Private because the guess format is given at the beginning nd should not be modified.
 
- _correct_guesses_right_pos(): 
+_make_code(self): ìgenerates a random combination of code. Private since the secret code should not be modified by the user.
+
+get_code(): provides a way for the user to retrieve the secret code. Public becasue it allows users to access the value of the secret code safely.
+
+_correct_guesses_right_pos() and _correct_guesses_wrong_pos(): compare a guess with the secret code and return the number of correct guesses in the right/wrong position. Private becasue internal details of the code evaluation process should be kept hidden from the user.
+
+**Mastermind
+Inherits from Codemaker and runs the actual game. Its attributes are inherited from Codemaker.
+The additional methods are:
+
+_formatting_guess(): ìensures that the input given by the user is converted to uppercase. Private becasue internal details of the game's input processing shouldn't be public.
+
+game(): public method that is called in the main and takes care of carrying out the game. It generates the secret code, prompts the user to input their guesses, receives user input guesses, and provides feedback to the user. After the max_iterations iterations are complete, the correct answer is revealed.
