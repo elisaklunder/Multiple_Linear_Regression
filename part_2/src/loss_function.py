@@ -51,8 +51,7 @@ ones are None, L1 or L2")
 
         return sum / n + lambda_param * weights
 
-    def mean_absolute_error(
-            self, y: np.ndarray, predicted_y: np.ndarray
+    def mean_absolute_error(self, y: np.ndarray, predicted_y: np.ndarray
                             ) -> float:
         """
         method that evaluates the mean absolute error and applies
