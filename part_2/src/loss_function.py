@@ -53,7 +53,7 @@ ones are None, L1 or L2")
 
     def mean_absolute_error(
             self, y: np.ndarray, predicted_y: np.ndarray
-            ) -> float:
+                            ) -> float:
         """
         method that evaluates the mean absolute error and applies
         regularization

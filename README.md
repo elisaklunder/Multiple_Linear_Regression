@@ -4,12 +4,7 @@
 ## Your report
 to do:
 - write report for and p2
-- comments (?) --> how much?
-- double check type-hints/docstrings
-- type checks for loss_function.py + check docstring some things are missng + raise errors
 
--DO TYPECHECKS FOR EVERY FUCKIN ARGUMENT
-- REGRESSION PLOTTER SHOLD WORK AS WELL!!!!
 
 ## Part 1
 
