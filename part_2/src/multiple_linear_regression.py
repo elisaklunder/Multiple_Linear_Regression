@@ -8,17 +8,18 @@ class MultipleLinearRegression(ML_model):
 
     def train(self, X: np.array = None, y: np.array = None) -> None:
         """
+        trains the model for multiple linear regression
+
         Args:
-            X: 2d numpy array with n rows (n=number of datapoints) and p-1
-            columns (p=number of parameters)
-            y: 1d numpy array with n rows containing target values
+            X (np.array, optional): 2d numpy array with n rows (n=number
+            of datapoints) and p-1 columns (p=number of parameters).
+            Defaults to None.
+            y (np.array, optional): 1d numpy array with n rows
+            containing target values. Defaults to None.
 
         Raises:
-            np.linalg.LinAlgError when XTX is not invertible
-            Value error if the X or the y slot were not specified
-
-        Returns:
-            None
+            ValueError: if the X or the y slot were not specified
+            np.linalg.LinAlgError: when XTX is not invertible
         """
         if X is None or y is None:
             raise ValueError("The train or the target slot are empty")
@@ -31,23 +32,25 @@ class MultipleLinearRegression(ML_model):
         except np.linalg.LinAlgError:
             raise np.linalg.LinAlgError(
                 "Singular matrix. The matrix X⊤X is \
-                                        not invertible. Check your input \
-                                        data."
+not invertible. Check your input data."
             )
 
-        self._weights = np.dot(np.dot(inverse_dot_product, X_transposed), y)
+        self.weights = np.dot(np.dot(inverse_dot_product, X_transposed), y)
 
     def predict(self, X: np.array = None) -> np.array:
         """
+        makes predictions on a given np.array
+
         Args:
-            X: 2d numpy array with n rows (n=number of datapoints) and p-1
-            columns (p=number of parameters)
+            X (np.array, optional): 2d numpy array with n rows (n=number of
+            datapoints) and p-1 columns (p=number of parameters). Defaults to
+            None.
 
         Raises:
-            ValueError if the X is not specified
+            ValueError: if the X is not specified
 
         Returns:
-            array containing predictions genarated from the X input
+            np.array: array containing predictions genarated from the X input
         """
         if X is None:
             raise ValueError(
@@ -56,37 +59,25 @@ class MultipleLinearRegression(ML_model):
 
         n = np.shape(X)[0]
         X = np.c_[np.ones(n), X]
-        return np.dot(X, self._weights)
+        return np.dot(X, self.weights)
 
     @property
-    def weights(self):
-        return self._weights
-
-    @weights.getter
     def weights(self) -> np.array:
         """
-        Args:
-            No arguments
-
-        Raises:
-            No errors
+        getter
 
         Returns:
-            An array containing the weights of the model
+            np.array: An array containing the weights of the model
         """
         return self._weights
 
     @weights.setter
     def weights(self, new_weights: np.array) -> None:
         """
+        setter
+
         Args:
-            new_weights: array containing value of the weights to be assigned
-            to self.weights
-
-        Raises:
-            No errors
-
-        Returns:
-            None
+            new_weights (np.array): array containing value of the weights to be
+            assigned to self.weights
         """
         self._weights = new_weights

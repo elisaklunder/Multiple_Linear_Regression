@@ -22,17 +22,14 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
 
     def _logging(self, i: int, mse: float, mae: float) -> None:
         """
-        This method is creating a log file
+        This private method creates a log file
+
         Args:
-            i: integer showing the number of iterations
-            mse: float with the value of the mean squared error for the given
-                 iteration
-            mae: float with the value of the mean absolute error for the given
-                 iteration
-        Raises:
-            No errors
-        Returns:
-            None
+            i (int): integer showing the number of iterations
+            mse (float): float with the value of the mean squared error for
+            the given iteration
+            mae (float): float with the value of the mean absolute error for
+            the given iteration
         """
         logging.basicConfig(
             filename="info_run.log", level=logging.INFO, format="%(message)s"
@@ -44,55 +41,54 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
 
     def _initialize_weights(self, num_weights: int) -> None:
         """
+        This method initializes the weights following a specific distribution
+        (either uniform or normal)
+
         Args:
-            num_weights: integer representing the number of weights to be
-                         initialized for gradient descent
-        Raises:
-            No Errors
-        Returns:
-            None
+            num_weights (int): integer representing the number of weights
+            to be initialized for gradient descent
         """
+
         if self.strategy == "uniform":
-            self._weights.append(
+            self.weight = self.weights.append(
                 np.random.uniform(low=-1, high=1, size=num_weights)
             )
         if self.strategy == "normal":
-            self._weights.append(
+            self.weights = self.weights.append(
                 np.random.normal(loc=0, scale=1, size=num_weights)
             )
-        self._weights = np.array(self._weights)
-        self._weights = np.transpose(self._weights)
+        self.weights = np.array(self.weights)
+        self.weights = np.transpose(self.weights)
 
     def _loss_gradient(
         self, X: np.array, y, predicted_y: np.array
     ) -> np.array:
         """
+        method that computes the loss gradient (the derivative of the loss
+        function)
+
         Args:
-            X: 2d numpy array with n rows (n=number of datapoints) and p
-               columns (p=number of parameters)
-            y: 1d numpy array with n rows containing target values
-            predicted_y: 1d numpy array with n rows containing the predicted
-                         target values
-        Raises:
-            No Errors
+            X (np.array): 2d numpy array with n rows (n=number of datapoints)
+            and p columns (p=number of parameters)
+            y (_type_): 1d numpy array with n rows containing target values
+            predicted_y (np.array): _description_
+
         Returns:
-            np.array with the gradient values
+            np.array: np.array with the gradient values
         """
+
         X_transposed = X.transpose()
         gradient = (1 / len(X)) * np.dot(X_transposed, (predicted_y - y))
         return gradient
 
     def _gradient_descent(self, X: np.array, y: np.array) -> None:
         """
-        Args:
-            X: 2d numpy array with n rows (n=number of datapoints) and p
-               columns (p=number of parameters)
-            y: 1d numpy array with n rows containing target values
-        Raises:
-            No errors
-        Returns:
-            None
+        method that updates the weights iteratively based on the loss gradient
 
+        Args:
+            X (np.array): 2d numpy array with n rows (n=number of datapoints)
+            and p columns (p=number of parameters)
+            y (np.array): 1d numpy array with n rows containing target values
         """
         # Initialize weights based on the chosen strategy
         num_weights = np.shape(X)[1]
@@ -103,34 +99,36 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
 
         for i in range(self.num_iterations):
             # Compute the predicted output for each data point
-            predicted_y = np.dot(X, self._weights)
+            predicted_y = np.dot(X, self.weights)
 
             # Compute the gradient
             gradient = self._loss_gradient(X, y, predicted_y)
 
             # Update the weights
-            self._weights = self._weights - self.alpha * gradient
+            self.weights = self.weights - self.alpha * gradient
 
             # Compute the losses
             mae = loss.mean_absolute_error(y, predicted_y)
             mse = loss.mean_squared_error(
-                y, predicted_y, self._penalty, self._weights, self.lambda_param
+                y, predicted_y, self._penalty, self.weights, self.lambda_param
             )
 
             self._logging(i, mse, mae)
 
     def train(self, X: np.array = None, y: np.array = None) -> None:
         """
+        public method that carries out the training with gradient descent
+
         Args:
-            X: 2d numpy array with n rows (n=number of datapoints) and p-1
-               columns (p=number of parameters)
-            y: 1d numpy array with n rows containing target values
+            X (np.array, optional):  2d numpy array with n rows (n=number of
+            datapoints) and p-1 columns (p=number of parameters). Defaults to
+            None.
+            y (np.array, optional): 1d numpy array with n rows containing
+            target values. Defaults to None.
 
         Raises:
-            ValueErrors if the X or y attributes were not specified
-
-        Returns:
-            None
+            ValueError: if the X variable is not specified
+            ValueError: if the y variable is not specified
         """
         if X is None:
             raise ValueError("The train slot is empty.")
@@ -147,4 +145,4 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
 
         # Run gd
         self._gradient_descent(X, y)
-        self._weights = self._weights.flatten()
+        self.weights = self.weights.flatten()
