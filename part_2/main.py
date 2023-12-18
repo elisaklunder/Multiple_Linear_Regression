@@ -9,6 +9,7 @@ from src.lasso_regression import LassoRegression
 from src.loss_function import LossFunction
 from src.model_saver import ModelSaver
 from src.multiple_linear_regression import MultipleLinearRegression
+from src.regression_plotter import RegressionPlotter
 from src.ridge_regression import RidgeRegression
 
 if __name__ == "__main__":
@@ -24,6 +25,15 @@ if __name__ == "__main__":
     y_train = y[:-20]
     y_test = y[-20:]
 
+    # Gradient Descent Multiple Linear Regression
+    gd_mlr = GDMultipleLinearRegression()
+    gd_mlr.train(X_train, y_train)
+    gd_mlr_predictions = gd_mlr.predict(X_test)
+    print(
+        f"GD Multiple Linear Regression predictions are:\n\
+{gd_mlr_predictions}"
+    )
+
     # Lasso
     lasso = LassoRegression()
     lasso.train(X_train, y_train)
@@ -36,14 +46,14 @@ if __name__ == "__main__":
     ridge_predictions = ridge.predict(X_test)
     print(f"Ridge predictions are:\n {ridge_predictions}")
 
-    # Gradient Descent Multiple Linear Regression
-    gd_mlr = GDMultipleLinearRegression()
-    gd_mlr.train(X_train, y_train)
-    gd_mlr_predictions = gd_mlr.predict(X_test)
-    print(
-        f"GD Multiple Linear Regression predictions are:\n\
-{gd_mlr_predictions}"
-    )
+    # Plot Lasso with multiple plots
+    plotter = RegressionPlotter()
+    plotter.plot(lasso, X_test, y_test)
+
+    # Plot Lasso with two features
+    lasso_2features = LassoRegression()
+    lasso_2features.train(X_train[:, :2], y_train)
+    plotter.plot(lasso_2features, X_test[:, :2], y_test)
 
     # Save and load weights
     saver = ModelSaver()
