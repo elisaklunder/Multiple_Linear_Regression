@@ -75,7 +75,7 @@ class Tests(unittest.TestCase):
 
     def test_correct_number_returened_wrong_pos(self):
         """
-        fails: if the function _correct_guesses_wrong_pos(guess) returns the
+        fail: if the function _correct_guesses_wrong_pos(guess) returns the
         incorrect number
         pass: otherwise
         """
@@ -85,8 +85,8 @@ class Tests(unittest.TestCase):
 
     def test_max_iterations(self):
         """
-        fails: if the maximum number of terations is not an int
-        passes: if the value is an int or if it is not specified by the user
+        fail: if the maximum number of terations is not an int
+        pass: if the value is an int or if it is not specified by the user
         """
         self.coder.max_iterations = 3
         self.assertIsInstance(self.coder.max_iterations, int)
@@ -94,10 +94,10 @@ class Tests(unittest.TestCase):
     def test_exception_right_col_wrong_pos(self):
         """
         EXCEPTION!
-        fails: if the number of returned colors is wrong (in this case the last
+        fail: if the number of returned colors is wrong (in this case the last
         B, shouldn't be considered as a right guess in the wrong position,
         since the B is already matched)
-        passes: otherwise
+        pass: otherwise
         """
         self.coder._code = ["B", "W", "B", "G"]
         guess = ["B", "W", "B", "B"]
@@ -105,18 +105,18 @@ class Tests(unittest.TestCase):
 
     def test_max_iterations1(self):
         """
-        passes: if when the maximum number of terations is not an int the
+        pass: if when the maximum number of terations is not an int the
         program doesn't raise an error
-        fails: when the error is not raised
+        fail: when the error is not raised
         """
         max_iterations = "a"
         self.assertRaises(TypeError, self.coder.__init__, max_iterations)
 
     def test_max_iterations2(self):
         """
-        fails: if the maximum number of iteration is not a number smaller
+        fail: if the maximum number of iteration is not a number smaller
         than 0, since the error is not raised
-        passes: if the error is raised
+        pass: if the error is raised
         """
         max_iterations = -3
         self.assertRaises(TypeError, self.coder.__init__, max_iterations)

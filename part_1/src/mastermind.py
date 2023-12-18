@@ -2,7 +2,7 @@ from codemaker import Codemaker
 
 
 class Mastermind(Codemaker):
-    def formatting_guess(self, guess: str) -> str:
+    def _formatting_guess(self, guess: str) -> str:
         """
         formats the initial guess
 
@@ -20,13 +20,14 @@ class Mastermind(Codemaker):
         method that takes care of carrying out the game, taking the user input
         """
         self._make_code()
+        guess = None
 
         for i in range(self.max_iterations):
             guess_input = input(
                 "type the initial of the colors\
  of the guesses separated by a space: "
             )
-            guess = self.formatting_guess(guess_input)
+            guess = self._formatting_guess(guess_input)
             guess = guess.split()
 
             wrong_position = self._correct_guesses_wrong_pos(guess)
@@ -41,5 +42,9 @@ class Mastermind(Codemaker):
  with the right color is: {wrong_position}"
             )
 
-        print(f"the correct answer is {self.get_code()}")
+        print(f"The correct answer is {self.get_code()}.")
+        if guess == self.get_code():
+            print("You won!")
+        else:
+            print("Sorry you lost.")
         pass
