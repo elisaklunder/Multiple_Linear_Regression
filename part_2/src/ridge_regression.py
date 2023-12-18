@@ -17,17 +17,16 @@ class RidgeRegression(GDMultipleLinearRegression):
         self, X: np.array, y: np.array, predicted_y: np.array
     ) -> np.array:
         """
+        loss gradient for ridge regression
         Args:
-            X: 2d numpy array with n rows (n=number of datapoints) and p
-               columns (p=number of parameters)
-            y: 1d numpy array with n rows containing target values
-            y_predicted: 1d numpy array with n rows containing predicted target
-                         values
-        Raises:
-            No Errors
-        Returns:
-            array containing the values for the gradient
+            X (np.array): 2d numpy array with n rows (n=number of datapoints)
+            and p columns (p=number of parameters)
+            y (np.array): 1d numpy array with n rows containing target values
+            predicted_y (np.array): 1d numpy array with n rows containing
+            predicted target values
 
+        Returns:
+            np.array: array containing the values for the gradient
         """
         n = np.shape(X)[0]
         X_transposed = X.transpose()

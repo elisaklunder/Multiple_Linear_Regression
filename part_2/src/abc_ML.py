@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod, abstractproperty
 from typing import Any, List
 
 
@@ -29,17 +29,10 @@ class ML_model(ABC):
         """
         pass
 
-    @property
-    @abstractmethod
-    def weights():
-        pass
-
-    @weights.getter
-    @abstractmethod
+    @abstractproperty
     def weights():
         pass
 
     @weights.setter
-    @abstractmethod
     def weights():
         pass

@@ -10,19 +10,17 @@ from src.abc_ML import ML_model
 class ModelSaver:
     def save_weights(self, model: ML_model, file_path: str) -> None:
         """
+        method that takes care of saving the weights.
+
         Args:
-            model: trained model
-            file_path: string containing the path where the file needs to be
-            saved
+            model (ML_model): trained model
+            file_path (str): string containing the path where the file needs to
+            be saved
 
         Raises:
-            NameError when the file format desired by the user is not
+            NameError: when the file format desired by the user is not
             implemented in the program
-
-        Returns:
-            None
         """
-
         file_format = PurePath(file_path).suffix
         supported_formats = [".csv", ".json", ".pickle"]
 
@@ -46,16 +44,16 @@ class ModelSaver:
 
     def load_weights(self, model: ML_model, file_path: str) -> None:
         """
+        method that loads weights from a file into a model
+
         Args:
-            model: model where the weights need to be loaded
-            file_path: string containing the path where the file containng the
-            weghts is located
+            model (ML_model): model where the weights need to be loaded
+            file_path (str): string containing the path where the file
+            containng the weights is located
 
         Raises:
-            No errors are raised
+            NameError: if the format of the file is not supported
 
-        Returns:
-            None
         """
         file_format = PurePath(file_path).suffix
         if file_format == ".csv":
@@ -76,3 +74,6 @@ class ModelSaver:
                 weights = pickle.load(file)
                 weights = np.array(weights, dtype=float)
                 model.weights = weights
+
+        else:
+            raise NameError("The format of the file is not supported")
