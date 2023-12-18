@@ -36,20 +36,34 @@ class GDMultipleLinearRegression(MultipleLinearRegression):
             float
         """
         if not isinstance(mse, np.ndarray) and mse.dtype == float:
-            raise ValueError("the mean squared error is not in the right \
-format")
-
+            raise ValueError(
+                "the mean squared error is not in the right \
+format"
+            )
         if not isinstance(mae, (np.ndarray)) and mae.dtype == float:
-            raise ValueError("the mean absolute error is not in the right \
-format")
+            raise ValueError(
+                "the mean absolute error is not in the right \
+format"
+            )
         if not isinstance(i, (int)):
             raise ValueError("the number of iterations has to be an int")
+
+        model_name = None
+        if self._penalty is None:
+            model_name = "GDMultipleLinearRegression"
+        if self._penalty == "L1":
+            model_name = "Lasso"
+        if self._penalty == "L2":
+            model_name = "Ridge"
+
         logging.basicConfig(
-            filename="info_run.log", level=logging.INFO, format="%(message)s"
+            filename="info.log",
+            level=logging.INFO,
+            format="%(message)s",
         )
         logging.info(
-            f"Iteration {i+1}/{self.num_iterations}, mse = {mse},\
- mae = {mae}"
+            f"Model: {model_name}, iteration {i+1}/{self.num_iterations}, \
+mse = {mse}, mae = {mae}"
         )
 
     def _initialize_weights(self, num_weights: int) -> None:
@@ -99,8 +113,10 @@ format")
         """
 
         if np.shape(X)[0] != np.shape(y)[0]:
-            raise TypeError("the matrices cannot be multiplied since they \
-have uncompatible shapes")
+            raise TypeError(
+                "the matrices cannot be multiplied since they \
+have uncompatible shapes"
+            )
 
         X_transposed = X.transpose()
         gradient = (1 / len(X)) * np.dot(X_transposed, (predicted_y - y))
@@ -120,8 +136,11 @@ have uncompatible shapes")
             predictions does not match
         """
         if np.shape(X)[0] != np.shape(y)[0]:
-            raise TypeError("the number of features and the number of \
-predictions does not match, something went wrong")
+            raise TypeError(
+                "the number of features and the number of \
+predictions does not match, something went wrong"
+            )
+
         # Initialize weights based on the chosen strategy
         num_weights = np.shape(X)[1]
         self._initialize_weights(num_weights)
@@ -165,14 +184,20 @@ predictions does not match, something went wrong")
             predictions does not match
         """
         if X is None:
-            raise ValueError("The train slot is empty, define it to make it\
-work.")
+            raise ValueError(
+                "The train slot is empty, define it to make it\
+work."
+            )
         if y is None:
-            raise ValueError("The target slot is empty, define it to make it\
- work.")
+            raise ValueError(
+                "The target slot is empty, define it to make it\
+ work."
+            )
         if np.shape(X)[0] != np.shape(y)[0]:
-            raise TypeError("the number of features and the number of \
-predictions does not match, something went wrong")
+            raise TypeError(
+                "the number of features and the number of \
+predictions does not match, something went wrong"
+            )
 
         # Reshaping the target to be in matrix form so that there are no
         # broadcasting issues
