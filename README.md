@@ -11,7 +11,7 @@ Manages Mastermind's solution with private attributes _colors and _code (which s
 
 Methods:
 
-- - _guess_errors(): raises errors on the user input. Private because the guess format is given at the beginning and should not be modified.
+- _guess_errors(): raises errors on the user input. Private because the guess format is given at the beginning and should not be modified.
 
 - _make_code(self): generates a random combination of code. Private since the secret code should not be modified by the user.
 
