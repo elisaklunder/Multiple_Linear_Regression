@@ -1,8 +1,8 @@
 import numpy as np
-from src.abc_ML import ML_model
+from src.abc_ML import MLModel
 
 
-class MultipleLinearRegression(ML_model):
+class MultipleLinearRegression(MLModel):
     def __init__(self) -> None:
         self._weights = []
 

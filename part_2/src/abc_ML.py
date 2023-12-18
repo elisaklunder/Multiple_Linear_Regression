@@ -2,14 +2,14 @@ from abc import ABC, abstractmethod, abstractproperty
 from typing import Any, List
 
 
-class ML_model(ABC):
+class MLModel(ABC):
     @abstractmethod
     def train(self, X: List[Any]) -> None:
         """
         Args:
-            X: data set the model is trained on, it can assume any format
-              supported by the model, usually it is a List of values, but they
-              can also be formatted in a data frame or np.ndarray.
+            X  List[Any]: data set the model is trained on, it can assume any
+            format supported by the model, usually it is a List of values, but
+            they can also be formatted in a data frame or np.ndarray.
 
         Returns:
             None
