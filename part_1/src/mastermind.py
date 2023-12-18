@@ -4,17 +4,20 @@ from codemaker import Codemaker
 class Mastermind(Codemaker):
     def formatting_guess(self, guess: str) -> str:
         """
+        formats the initial guess
+
         Args:
-            guess: four strings
+            guess (str): list containg string with the guesses
+
         Returns:
-            a string in higher case to make sure that the
+            str: a string in higher case to make sure that the
             colors typed in the input can be matched
         """
         return guess.upper()
 
     def game(self) -> None:
         """
-        method that takes care of carrying out the game
+        method that takes care of carrying out the game, taking the user input
         """
         self._make_code()
 

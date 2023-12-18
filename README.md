@@ -56,3 +56,11 @@ Questions:
 - should init be in the abc?
 - is abc_ML correct ???
 - should the @property be docstringed in teh abc class
+
+##Part 1
+Our implementation of the mastermind game consists of 3 files, one for each functinality of the class:
+- codemaker: class taking care of the functionalities relative to providing a solution to the game
+- mastermind: class taking care of the user input
+- game: runs the game
+
+**Codemaker
