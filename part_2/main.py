@@ -6,7 +6,6 @@ import numpy as np
 sys.path.append(os.getcwd() + "/part_2/src")
 from src.gd_multiple_linear_regression import GDMultipleLinearRegression
 from src.lasso_regression import LassoRegression
-from src.loss_function import LossFunction
 from src.model_saver import ModelSaver
 from src.multiple_linear_regression import MultipleLinearRegression
 from src.regression_plotter import RegressionPlotter
